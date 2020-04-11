@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.vehicle</groupId>
-	<artifactId>vehicle-gatway</artifactId>
+	<artifactId>my-gatway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>vehicle-gatway</name>
+	<name>my-gatway</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -19,8 +19,9 @@
 		<spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
 		<spring-cloud.version>Hoxton.SR3</spring-cloud.version>
 	</properties>
-
+	<!--	这里都是最小化配置，如果没有其它要求，这就可以用了-->
 	<dependencies>
+		<!--	注册中心客户端	-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
@@ -29,26 +30,17 @@
 <!--			<groupId>com.alibaba.cloud</groupId>-->
 <!--			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
 <!--		</dependency>-->
+		<!--		网关核心包-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-gateway</artifactId>
 		</dependency>
+		<!--	奈菲的断路器	-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
