@@ -2,9 +2,7 @@ package com.rei.javaDemo.example;
 
 import com.rei.javaDemo.model.TestParam;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -88,5 +86,36 @@ public class StreamExample {
     public static void streamMGroup(){
         // 根据某个字段分组，然后可以方便根据分组key取出对应的数据
         Map<String,List<TestParam>> map = list.stream().collect(Collectors.groupingBy(TestParam::getSex));
+        // 找到共同的id的数据
+        List<TestParam> a = list.stream().filter(e->ccc(e,list)).collect(Collectors.toList());
+        // 排除共同的数据
+
+
+    }
+
+    private static boolean ccc(TestParam a, List<TestParam> list){
+        for (TestParam t : list){
+            if (a.getName().equals(t.getName())){
+                return true;
+            }
+        }
+        return false;
+    }
+    private static boolean bbb(TestParam a, List<TestParam> list){
+        for (TestParam t : list){
+            if (a.getName().equals(t.getName())){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 根据某些字段排重
+     */
+    public static void streamDistinct(){
+        list.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(
+                () -> new TreeSet<>(Comparator.comparing(TestParam::getName))),
+                ArrayList::new));
     }
 }

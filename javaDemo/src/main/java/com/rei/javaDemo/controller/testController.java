@@ -1,13 +1,11 @@
 package com.rei.javaDemo.controller;
 
+import com.rei.javaDemo.example.TransExample;
 import com.rei.javaDemo.model.TestParam;
 import com.rei.javaDemo.service.TestService;
 import com.rei.javaDemo.service.ZsxqService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/test")
@@ -17,6 +15,8 @@ public class testController {
     private TestService testService;
     @Autowired
     private ZsxqService zsxqService;
+    @Autowired
+    private TransExample transExample;
 
     @RequestMapping("test")
     public String test(@RequestBody TestParam testParam){
@@ -48,7 +48,14 @@ public class testController {
      * @return
      */
     @RequestMapping(value = "paramTestPost",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
-    public String paramTestPost(){
+    public String paramTestPost(@RequestBody TestParam testParam){
+        System.out.println(1);
         return "";
     }
+
+    @GetMapping("testTrans")
+    public void testTrans(){
+        transExample.save();
+    }
+
 }
