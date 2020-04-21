@@ -1,5 +1,6 @@
 package com.rei.javaDemo.controller;
 
+import com.rei.javaDemo.aspect.MyAspect;
 import com.rei.javaDemo.example.TransExample;
 import com.rei.javaDemo.model.TestParam;
 import com.rei.javaDemo.service.TestService;
@@ -56,6 +57,12 @@ public class testController {
     @GetMapping("testTrans")
     public void testTrans(){
         transExample.save();
+    }
+
+    @MyAspect("hhh")
+    @GetMapping("testAspect")
+    public void testAspect(@RequestParam("Str")String str ){
+        System.out.println("测试自定义注解");
     }
 
 }
