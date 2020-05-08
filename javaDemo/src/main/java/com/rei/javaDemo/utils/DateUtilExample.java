@@ -8,6 +8,7 @@ import java.util.Date;
 public class DateUtilExample {
 
     public static void main(String[] args) {
+        Date n = DateUtil.parse("");
         Date utc = DateUtil.parse("2020-04-15T13:15:16");
         Date date1 = DateUtil.parse("20200404");
         DateTime now = DateUtil.date();

@@ -118,4 +118,23 @@ public class StreamExample {
                 () -> new TreeSet<>(Comparator.comparing(TestParam::getName))),
                 ArrayList::new));
     }
+
+    /**
+     * stream排序，并且取出最大最小
+     */
+    public static void streamDateSort(){
+        Date d1 = new Date();
+        try {
+            Thread.sleep(1000);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        Date d2 = new Date();
+        List<Date> dates = new ArrayList<>(4);
+        // 正序
+        dates.stream().sorted();
+        // 倒序
+        dates.stream().sorted(Comparator.reverseOrder());
+
+    }
 }
