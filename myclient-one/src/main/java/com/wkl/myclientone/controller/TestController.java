@@ -18,7 +18,7 @@ import java.util.Map;
 @RequestMapping("test1")
 public class TestController {
 
-//    @Resource
+    @Resource
     private FetchTwoService fetchTwoService;
 
     @GetMapping("test")
@@ -26,6 +26,7 @@ public class TestController {
         Map<String,Object> params = new HashMap<>();
         params.put("id",param.get("id"));
         String a = fetchTwoService.postTestTwo(params);
+        System.out.println("======执行完毕=====");
         DateTime d = new DateTime();
         return d.toString();
     }

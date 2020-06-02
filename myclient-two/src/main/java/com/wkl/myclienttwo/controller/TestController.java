@@ -17,8 +17,15 @@ public class TestController implements TestApi{
     }
 
     @PostMapping("postTest")
-    public String postTest(@RequestBody Map<String,Object> param){
+    public String postTest(@RequestBody Map<String,Object> param) {
         System.out.println("调用到这里了....."+new Date().getTime());
+        try {
+            Thread.sleep(2000);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        System.out.println("postTest ending"+new Date().getTime());
         return "我是two,你的参数id是"+param.get("id");
     }
 }

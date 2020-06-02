@@ -1,12 +1,16 @@
 package com.rei.javaDemo.controller;
 
 import com.rei.javaDemo.aspect.MyAspect;
+import com.rei.javaDemo.example.ThreadExample;
 import com.rei.javaDemo.example.TransExample;
 import com.rei.javaDemo.model.TestParam;
 import com.rei.javaDemo.service.TestService;
 import com.rei.javaDemo.service.ZsxqService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/test")
@@ -18,9 +22,11 @@ public class testController {
     private ZsxqService zsxqService;
     @Autowired
     private TransExample transExample;
+    @Autowired
+    private ThreadExample threadExample;
 
     @RequestMapping("test")
-    public String test(@RequestBody TestParam testParam){
+    public String test(@RequestBody TestParam testParam, HttpServletRequest request){
         return "123";
     }
     @RequestMapping("test2")
@@ -63,6 +69,14 @@ public class testController {
     @GetMapping("testAspect")
     public void testAspect(@RequestParam("Str")String str ){
         System.out.println("测试自定义注解");
+    }
+
+    /**
+     * 多线程极端测试
+     */
+    @GetMapping("testMultiThread")
+    public void testMultiThread(){
+        threadExample.MultiThread();
     }
 
 }
