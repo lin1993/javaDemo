@@ -1,5 +1,6 @@
 package com.rei.javaDemo.service.impl;
 
+import com.rei.javaDemo.example.BusException;
 import com.rei.javaDemo.mapper.TestMapper;
 import com.rei.javaDemo.model.TestParam;
 import com.rei.javaDemo.service.TestService;
@@ -20,7 +21,12 @@ public class TestServiceImpl implements TestService {
     @Override
     public void dateBaseTest() {
         List<TestParam> list = testMapper.pageList(1,10);
-        HttpUtil.sendGet("",null);
+//        HttpUtil.sendGet("",null);
         int a = 0;
+    }
+
+    @Override
+    public void dateException() throws BusException {
+        throw new BusException("4995");
     }
 }

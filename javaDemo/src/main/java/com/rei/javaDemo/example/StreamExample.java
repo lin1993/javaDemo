@@ -1,5 +1,6 @@
 package com.rei.javaDemo.example;
 
+import cn.hutool.core.date.DateUtil;
 import com.rei.javaDemo.model.TestParam;
 
 import java.util.*;
@@ -93,6 +94,13 @@ public class StreamExample {
 
     }
 
+    /**
+     * 将一个集合转换为Map
+     */
+    public static void  listToMap(){
+        Map<Integer,String> map = list.stream().collect(Collectors.toMap(TestParam::getId, TestParam::getName));
+    }
+
     private static boolean ccc(TestParam a, List<TestParam> list){
         for (TestParam t : list){
             if (a.getName().equals(t.getName())){
@@ -123,6 +131,7 @@ public class StreamExample {
      * stream排序，并且取出最大最小
      */
     public static void streamDateSort(){
+
         Date d1 = new Date();
         try {
             Thread.sleep(1000);

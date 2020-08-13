@@ -20,7 +20,7 @@ public class TestController implements TestApi{
     public String postTest(@RequestBody Map<String,Object> param) {
         System.out.println("调用到这里了....."+new Date().getTime());
         try {
-            Thread.sleep(2000);
+            Thread.sleep(3000);
         }catch (Exception e){
             e.printStackTrace();
         }
