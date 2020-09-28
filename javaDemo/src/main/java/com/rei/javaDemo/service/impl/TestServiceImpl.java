@@ -1,5 +1,6 @@
 package com.rei.javaDemo.service.impl;
 
+import com.rei.javaDemo.aspect.MyAspect;
 import com.rei.javaDemo.example.BusException;
 import com.rei.javaDemo.mapper.TestMapper;
 import com.rei.javaDemo.model.TestParam;
@@ -28,5 +29,20 @@ public class TestServiceImpl implements TestService {
     @Override
     public void dateException() throws BusException {
         throw new BusException("4995");
+    }
+
+    /**
+     * 注解切面测试
+     */
+    @MyAspect(value = "55662")
+    @Override
+    public String  aspectTest() {
+        try {
+            Thread.sleep(100);
+        }catch (Exception e){
+
+        }
+
+        return  "110";
     }
 }

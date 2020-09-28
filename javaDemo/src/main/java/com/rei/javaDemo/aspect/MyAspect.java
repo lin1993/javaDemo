@@ -12,5 +12,8 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface MyAspect {
 
-    String value();
+    // 给默认值
+    String value() default "";
+    // 如果有两个参数都有默认值，那么使用的时候无需声明用哪个的时候，默认会取value
+    String path() default "";
 }

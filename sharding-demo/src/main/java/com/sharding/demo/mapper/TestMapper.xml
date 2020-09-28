@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sharding.demo.mapper.TestMapper">
+
+    <resultMap id="BaseResultMap" type="com.sharding.demo.mapper.TestMapper" >
+        <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="sex" property="sex" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                id,
+                name,
+                sex
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id" parameterType="com.sharding.demo.model.TestParam">
+        INSERT INTO t_test
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test ='null != name'>
+                name,
+            </if>
+            <if test ='null != sex'>
+                sex
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test ='null != name'>
+                #{name},
+            </if>
+            <if test ='null != sex'>
+                #{sex}
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="delete" >
+        DELETE FROM t_test
+        WHERE id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.sharding.demo.model.TestParam">
+        UPDATE t_test
+        <set>
+            <if test ='null != name'>name = #{name},</if>
+            <if test ='null != sex'>sex = #{sex}</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+
+    <select id="load" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM t_test
+        WHERE id = #{id}
+    </select>
+
+    <select id="pageList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM t_test
+        LIMIT #{offSet}, #{pageSize}
+    </select>
+
+    <select id="pageListCount" resultType="java.lang.Integer">
+        SELECT count(1)
+        FROM t_test
+    </select>
+
+</mapper>

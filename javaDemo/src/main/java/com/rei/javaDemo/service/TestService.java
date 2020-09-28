@@ -12,4 +12,10 @@ public interface TestService {
      * 自定义异常
      */
     void dateException() throws BusException;
+
+    /**
+     * 注解切面相关测试
+     * @throws BusException
+     */
+    String aspectTest();
 }

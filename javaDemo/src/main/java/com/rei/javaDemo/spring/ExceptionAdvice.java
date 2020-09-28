@@ -79,6 +79,7 @@ public class ExceptionAdvice {
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
     public BaseResponse handleParamsException(Exception ex) throws IOException {
+        log.error("所有的异常信息如下：",ex);
         StrBuilder errorMsg = new StrBuilder();
         errorMsg.append("==系统发生异常==");
         if(ex.getCause() != null){
