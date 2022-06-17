@@ -57,7 +57,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.2.62</version>
+			<version>1.2.83</version>
 		</dependency>
         <!-- 谷歌guava工具包 并发、本地简单缓存很爽还有string处理 -->
         <dependency>
